@@ -10,6 +10,3 @@ def getDB(filename):
         t = line.split(" ")
         db.append(t)
     return db
-
-db = getDB("test.txt")
-print(db)
