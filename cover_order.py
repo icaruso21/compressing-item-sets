@@ -4,7 +4,7 @@ from mlxtend.frequent_patterns import apriori
 
 def cover_order(j, db):
     '''
-    Returns a list of item sets I sorted in decreasing order by level of support in dataset db.
+    Returns a list of item sets j sorted by decreasing cover over db
 
     Parameters:
     j (list of sets): List of item sets
