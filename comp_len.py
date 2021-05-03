@@ -1,4 +1,4 @@
-def compLen(codeSet, db):
+def comp_len(codeSet, db):
 '''
 Returns the minimum description length (MDL) of a code set compressing a dataset db.
 

@@ -1,4 +1,6 @@
-def naiveCompression(I,J,db):
+import comp_len, cover_order, standard
+
+def naive_compression(I,J,db):
 '''
 Returns a list of item sets J sorted in decreasing order by level of "cover" in dataset db.
 
@@ -14,7 +16,7 @@ Returns:
 	for singleton in I:
 		J.remove(singleton)
 
-	canItems = coverOrder(J,db) # Consider candidate item sets in cover order
+	canItems = cover_order(J,db) # Consider candidate item sets in cover order
 
 	while len(canItems) > 0:
 		cand = canItems.pop(0)
@@ -23,7 +25,7 @@ Returns:
 		canCodeSet = standard(canCodeSet.append(cand), db)
 
 		# Compare length of candidate and existing code sets
-		if compLen(canCodeSet, db) < compLen(codeSet, db):
+		if comp_len(canCodeSet, db) < comp_len(codeSet, db):
 			codeSet = canCodeSet # Update code set if adding candidate itemset improves compression
 
 	return codeSet
