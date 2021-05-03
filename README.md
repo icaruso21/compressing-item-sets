@@ -1,10 +1,12 @@
 # compressing-item-sets
 
-A data mining project
+A suite of algorithms for finding interesting item sets in large databases by considering the item sets that *compress* the data best. Python implementations of the algorithms described in ["Item Sets That Compress"](http://www.cs.uu.nl/groups/ADA/pubs/2006/item_sets_that_compress-siebes,vreeken,vanleeuwen.pdf).
 
+## Usage
 
+`python main.py version filepath`
 
-# Environment Setup
+## Environment Setup
 
 To create a new environment:
 
