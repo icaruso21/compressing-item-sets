@@ -34,8 +34,8 @@ def cover_order(j, db):
             toreturn_covers.append(itemset)
     return toreturn_covers
 
-j = [{2,3,4}, {1,2,3}, {3}, {1,2}, {2,3,4,5}]
-db = [[1,2,3,4,5],[1,2],[1,2,3]]
-cover_test = cover_order(j, db)
-print("List of itemsets returned from cover_test by descending cover: ")
-print(cover_test)
+#j = [{2,3,4}, {1,2,3}, {3}, {1,2}, {2,3,4,5}]
+#db = [[1,2,3,4,5],[1,2],[1,2,3]]
+#cover_test = cover_order(j, db)
+#print("List of itemsets returned from cover_test by descending cover: ")
+#print(cover_test)

@@ -1,17 +1,19 @@
-import comp_len, cover_order, standard
+from standard import standard
+from comp_len import comp_len
+from cover_order import cover_order
 
 def naive_compression(I,J,db):
-'''
-Returns a list of item sets J sorted in decreasing order by level of "cover" in dataset db.
+	'''
+	Returns a list of item sets J sorted in decreasing order by level of "cover" in dataset db.
 
-Parameters:
-	I (list of sets): Alphabet, list of singleton item sets
-	J (list of sets): List of all item sets (permutations) made from I 
-	db (list of lists): List of transactions comprising dataset 
-Returns:
-	codeSet (list of sets): minimal coding set of db
-'''
-	codeSet = standard(I,db) # Create code set using singleton items (alphsbet I)
+	Parameters:
+		I (list of sets): Alphabet, list of singleton item sets
+		J (list of sets): List of all item sets (permutations) made from I 
+		db (list of lists): List of transactions comprising dataset 
+	Returns:
+		codeSet (list of sets): minimal coding set of db
+	'''
+	codeSet = standard(I,db) # Create code set using singleton items (alphabet I)
 
 	for singleton in I:
 		J.remove(singleton)
@@ -21,8 +23,9 @@ Returns:
 	while len(canItems) > 0:
 		cand = canItems.pop(0)
 
-		canCodeSet = codeSet
-		canCodeSet = standard(canCodeSet.append(cand), db)
+		canCodeSet = codeSet.copy()
+		canCodeSet.append(cand)
+		canCodeSet = standard(canCodeSet, db)
 
 		# Compare length of candidate and existing code sets
 		if comp_len(canCodeSet, db) < comp_len(codeSet, db):

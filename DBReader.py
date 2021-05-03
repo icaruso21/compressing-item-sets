@@ -7,6 +7,7 @@ def getDB(filename):
     file = open(filename, "r")
     db = []
     for line in file:
-        t = line.split(" ")
+        t = line.rstrip()
+        t = t.split(" ")
         db.append(t)
     return db
