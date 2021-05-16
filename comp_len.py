@@ -26,8 +26,11 @@ def comp_len(codeSet, db):
 
 	totalFreq = sum(itemFreq)
 
-	while 0 in itemFreq:
-		itemFreq.remove(0)
+	newItemFreq = []
+	for i in itemFreq:
+		if(i != 0):
+			newItemFreq.append(i)
+	itemFreq = newItemFreq
 
 	lDH = -sum([f * math.log(f/totalFreq) for f in itemFreq])
 

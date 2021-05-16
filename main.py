@@ -2,6 +2,7 @@ import sys
 import itertools
 from naive_compression import naive_compression
 from DBReader import getDB
+from timeit import default_timer as timer
 
 def main():
 	'''
@@ -16,10 +17,13 @@ def main():
 	# Parse arguments
 	if len(sys.argv) != 3:
 		print("main.py: Invalid Arguments.")
-		print("Usage: python main.py --v version --f file_path")
+		print("Usage: python main.py version file_path")
 		return
 	else:
-		print("Running naive compression on data in " + sys.argv[2] + ".")
+		if(sys.argv[1] == "pruning"):
+			print("Running compression with pruning on data in " + sys.argv[2] + ".")
+		else:
+			print("Running naive compression (default) on data in " + sys.argv[2] + ".")
 
 		# Read data file into memory
 		data = getDB(sys.argv[2])
@@ -50,11 +54,23 @@ def main():
 
 		print("J: ", j)
 
-		codeSet = naive_compression(alphabet, j, data)
+
+		# Run Compression Algorithm
+		start = timer()
+		if(sys.argv[1] == "pruning"):
+			pass
+		else:
+			codeSet = naive_compression(alphabet, j, data)
+		end = timer()
+
+		runtime = (end - start)
 
 		# Print final codeSet
+		print("Code Set:")
 		for itemset in codeSet:
 			print(itemset)
+
+		print("Compression took " + str(runtime) + " seconds on data in " + sys.argv[2] + ".")
 
 if __name__ == '__main__':
 	main()

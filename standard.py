@@ -16,7 +16,7 @@ def standard(I, db):
 				res[idx][1] += 1
 
 	# Sort in descending order of support
-	res.sort(key= lambda x: x[1])
+	res.sort(key= lambda x: x[1], reverse=True)
 	# Remove support values
 	res = [x[0] for x in res]
 
