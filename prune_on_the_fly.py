@@ -10,7 +10,8 @@ def prune_on_the_fly(canCodeSet, codeSet, db):
 		codeSet (list of sets): minimal coding set of db
 	'''
 
-	pruneSet = [] # TODO: intialize pruneSet
+	
+	pruneSet = [j for j in codeSet if cover(j, canCodeSet) < cover(j, codeSet)]
 	# pruneSet contains all J from codeSet where cover(J, canCodeSet) < cover(J, codeSet)
 
 	pruneSet = standard(pruneSet, db)
@@ -25,3 +26,23 @@ def prune_on_the_fly(canCodeSet, codeSet, db):
 			canCodeSet = posCodeSet
 
 	return canCodeSet
+
+
+def cover(j, codeSet):
+	'''
+	Finds the cover of an itemset in a coding set.
+
+	Parameters:
+		j (set if ints): Itemset in codeSet
+		codeSet (list of sets):  Coding set of db
+	Returns:
+		cover (float): 
+	'''
+	cover = 0
+	#codeSetLen = [len(j) for j in codeSet]
+
+	for itemset in codeSet:
+		if j.issubset(itemset):
+			cover += len(j)
+
+	return cover
