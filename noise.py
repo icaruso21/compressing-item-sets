@@ -7,11 +7,11 @@ def noise(I, codeSet, db):
 		codeSet (list of sets): Coding set of db
 		db (list of lists): List of transactions comprising dataset 
 	Returns:
-		noise (list of lists): list of freak transactions in the database
+		noise (set of sets): set of freak transactions in the database
 	'''
-    noise = []
+    noise = {}
     for t in range(0, len(db)):
         if len(db[t]) < len(codeSet[t]): # if L_S(t) > L_{CS}(t)
-            noise.append(db[t])
+            noise.add(frozenset(db[t]))
 
     return noise
