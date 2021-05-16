@@ -1,6 +1,7 @@
 from standard import standard
 from comp_len import comp_len
 from cover_order import cover_order
+from prune_on_the_fly import prune_on_the_fly
 
 def compress_and_prune(I,J,db):
 	'''
