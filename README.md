@@ -25,7 +25,7 @@ To restore an environment:
 
 - `pip install -r ./requirements.txt`
 
-## Datasets used for testing
+### Datasets used for testing
 All datasets were taken from http://fimi.uantwerpen.be/data/. They can be found under the `data` folder of this repository (with the exception of `kosarak`, which is too large to add to the repository)
 
 - `chess`
