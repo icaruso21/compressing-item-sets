@@ -22,7 +22,7 @@ def naive_compression(I,J,db):
 
 	print("Base code set: ")
 	print(codeSet)
-	print(comp_len(codeSet, db))
+	print(comp_len(codeSet, db, I))
 	print("---------------")
 
 	while len(canItems) > 0:
@@ -35,9 +35,9 @@ def naive_compression(I,J,db):
 		print(canCodeSet)
 
 		# Compare length of candidate and existing code sets
-		if comp_len(canCodeSet, db) < comp_len(codeSet, db):
+		if comp_len(canCodeSet, db, I) < comp_len(codeSet, db, I):
 			codeSet = canCodeSet # Update code set if adding candidate itemset improves compression
 
-		print(comp_len(canCodeSet, db))
+		print(comp_len(canCodeSet, db, I))
 
 	return codeSet

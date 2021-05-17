@@ -1,12 +1,13 @@
 import math
 
-def comp_len(codeSet, db):
+def comp_len(codeSet, db, I):
 	'''
 	Returns the minimum description length (MDL) of a code set compressing a dataset db.
 
 	Parameters:
 		codeSet (list of sets): Candidate coding set of db
 		db (list of lists): List of transactions comprising dataset 
+		I (list of sets): Alphabet, list of singleton item sets
 	Returns:
 		length (int): MDL of codeSet on db
 	'''
@@ -26,6 +27,9 @@ def comp_len(codeSet, db):
 
 	totalFreq = sum(itemFreq)
 
+	# L(H) - length of code set representation
+	lH = sum([(len(c) * math.ceil(math.log2(len(I)))) + math.ceil(math.log2(len(codeSet))) for idx, c in enumerate(codeSet) if itemFreq[idx] != 0])
+
 	newItemFreq = []
 	for i in itemFreq:
 		if(i != 0):
@@ -33,8 +37,5 @@ def comp_len(codeSet, db):
 	itemFreq = newItemFreq
 
 	lDH = -sum([f * math.log(f/totalFreq) for f in itemFreq])
-
-	# L(H) - length of code set representation
-	lH = sum([len(itemset) for itemset in codeSet]) + len(codeSet)
 
 	return lH + lDH

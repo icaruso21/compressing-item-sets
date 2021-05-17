@@ -30,7 +30,7 @@ def compress_and_prune(I,J,db):
 
 		# Compare length of candidate and existing code sets
 		if comp_len(canCodeSet, db) < comp_len(codeSet, db):
-			canCodeSet = prune_on_the_fly(canCodeSet, codeSet, db)
+			canCodeSet = prune_on_the_fly(canCodeSet, codeSet, db, I)
 
 			codeSet = canCodeSet # Update code set if adding candidate itemset improves compression
 
