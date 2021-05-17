@@ -1,6 +1,9 @@
 import sys
 import itertools
 from naive_compression import naive_compression
+from compress_and_prune import compress_and_prune
+from compress_and_sanitize import compress_and_sanitize
+from all_out_compression import all_out_compression
 from DBReader import getDB
 from timeit import default_timer as timer
 
@@ -18,17 +21,14 @@ def main():
 	if len(sys.argv) != 3:
 		print("main.py: Invalid Arguments.")
 		print("Usage: python main.py version file_path")
+		print("Versions: naive | pruning | allout | sanitize")
 		return
 	else:
-		if(sys.argv[1] == "pruning"):
-			print("Running compression with pruning on data in " + sys.argv[2] + ".")
-		else:
-			print("Running naive compression (default) on data in " + sys.argv[2] + ".")
 
 		# Read data file into memory
 		data = getDB(sys.argv[2])
 
-		print("Data: ", data)
+		#print("Data: ", data)
 
 		# Extract alphabet
 		alphabet = set()
@@ -38,7 +38,7 @@ def main():
 
 		alphabet = [set(singleton) for singleton in alphabet]
 
-		print("Alphabet: ", alphabet)
+		#print("Alphabet: ", alphabet)
 
 		# Extract all item sets J
 		j = set()
@@ -52,14 +52,22 @@ def main():
 
 		j = list(j)
 
-		print("J: ", j)
+		#print("J: ", j)
 
 
 		# Run Compression Algorithm
 		start = timer()
 		if(sys.argv[1] == "pruning"):
-			pass
+			print("Running compression with pruning on data in " + sys.argv[2] + ".")
+			codeSet = compress_and_prune(alphabet, j, data)
+		elif(sys.argv[1] == "allout"):
+			print("Running all-out compression on data in " + sys.argv[2] + ".")
+			codeSet = all_out_compression(alphabet, j, data)
+		elif(sys.argv[1] == "sanitize"):
+			print("Running compress-and-sanitize on data in " + sys.argv[2] + ".")
+			codeSet = compress_and_sanitize(alphabet, j, data)
 		else:
+			print("Running naive compression (default) on data in " + sys.argv[2] + ".")
 			codeSet = naive_compression(alphabet, j, data)
 		end = timer()
 

@@ -1,3 +1,6 @@
+from standard import standard
+from comp_len import comp_len
+
 def prune_on_the_fly(canCodeSet, codeSet, db, I):
 	'''
 	Removes an element from CanCodeSet and check if the resulting compression is better than that of CodeSet itself.

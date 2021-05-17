@@ -24,8 +24,8 @@ def cover_order(j, db):
     frequent_itemsets['cover'] = frequent_itemsets['length'] * frequent_itemsets['support']
     # Sort itemsets by cover, descending
     frequent_itemsets = frequent_itemsets.sort_values('cover', ascending=False)
-    print("Itemsets with the 10 largest covers: ")
-    print(frequent_itemsets[:10])
+    #print("Itemsets with the 10 largest covers: ")
+    #print(frequent_itemsets[:10])
     sorted_covers = frequent_itemsets['itemsets'].values.tolist()
     toreturn_covers = []
     # Add itemsets in j to toreturn_covers list to be returned

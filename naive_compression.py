@@ -20,24 +20,24 @@ def naive_compression(I,J,db):
 
 	canItems = cover_order(J,db) # Consider candidate item sets in cover order
 
-	print("Base code set: ")
-	print(codeSet)
-	print(comp_len(codeSet, db, I))
-	print("---------------")
+	#print("Base code set: ")
+	#print(codeSet)
+	#print(comp_len(codeSet, db, I))
+	#print("---------------")
 
 	while len(canItems) > 0:
 		cand = canItems.pop(0)
 
 		canCodeSet = codeSet.copy()
 		canCodeSet.append(cand)
-		canCodeSet = standard(canCodeSet, db)
+		canCodeSet = cover_order(canCodeSet, db)
 
-		print(canCodeSet)
+		#print(canCodeSet)
 
 		# Compare length of candidate and existing code sets
 		if comp_len(canCodeSet, db, I) < comp_len(codeSet, db, I):
 			codeSet = canCodeSet # Update code set if adding candidate itemset improves compression
 
-		print(comp_len(canCodeSet, db, I))
+		#print(comp_len(canCodeSet, db, I))
 
 	return codeSet
