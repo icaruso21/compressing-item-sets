@@ -1,3 +1,4 @@
+
 def noise(I, codeSet, db):
     '''
 	Returns a list of freak transactions in the database.
@@ -13,5 +14,4 @@ def noise(I, codeSet, db):
     for t in range(0, len(db)):
         if len(db[t]) < len(codeSet[t]): # if L_S(t) > L_{CS}(t)
             noise.add(frozenset(db[t]))
-
     return noise

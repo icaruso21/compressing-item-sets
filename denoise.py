@@ -15,6 +15,7 @@ def denoise (i, code_set, db):
     noiseSet = noise(i, code_set, db)
     denoised_db = []
     for transaction in db:
-        if set(transaction) not in noiseSet:
+        if frozenset(transaction) not in noiseSet:
             denoised_db.append(transaction)
+
     return denoised_db
