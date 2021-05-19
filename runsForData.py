@@ -89,7 +89,7 @@ def runsForData(algorithm, filepath, min_supp):
 			"code_set": [list(x) for x in codeSet],
 			"code_set_length": len(codeSet)}
 
-def do_runs(filepath):
+def do_runs(filepath, dataset):
 	algorithms = ["pruning", "allout", "sanitize", "naive"]
 	min_supps = [1, 2, 3, 4]
 	for min_supp in min_supps:
@@ -97,9 +97,10 @@ def do_runs(filepath):
 			output = runsForData(algorithm, filepath, min_supp)
 			output['min_supp'] = min_supp
 			output['algorithm'] = algorithm
-			with open(f'./out/{algorithm}_{min_supp}.json', 'w') as f:
+			with open(f'./out/{dataset}_{algorithm}_{min_supp}.json', 'w') as f:
 				json.dump(output, f)
 
 
 filepath = "./data/input.txt"
-do_runs(filepath)
+dataset = "input"
+do_runs(filepath, dataset)
