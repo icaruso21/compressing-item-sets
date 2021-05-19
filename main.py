@@ -54,7 +54,7 @@ def main():
 
 		#print("J: ", j)
 
-
+		#import pdb;pdb.set_trace()
 		# Run Compression Algorithm
 		start = timer()
 		if(sys.argv[1] == "pruning"):

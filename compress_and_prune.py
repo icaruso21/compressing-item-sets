@@ -17,7 +17,10 @@ def compress_and_prune(I,J,db):
 	codeSet = standard(I,db) # Create code set using singleton items (alphabet I)
 
 	for singleton in I:
-		J.remove(singleton)
+		try:
+			J.remove(singleton)
+		except:
+			continue
 
 	canItems = cover_order(J,db) # Consider candidate item sets in cover order
 
